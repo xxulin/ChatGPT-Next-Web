@@ -71,7 +71,10 @@ export function requestOpenaiClient(path: string) {
     fetch(openaiUrl + path, {
       method,
       body: body && JSON.stringify(body),
-      headers: getHeaders(),
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders()
+      },
     });
 }
 
